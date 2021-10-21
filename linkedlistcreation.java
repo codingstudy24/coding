@@ -9,6 +9,7 @@ class Node{
 }
 class linkedlistcreation{
     static Node head=null;
+    static Scanner sc;
     static void printlist(Node val){
         while(val!=null){
             
@@ -17,7 +18,7 @@ class linkedlistcreation{
         }
     }
     static void dynamic(int count){
-        Scanner sc=new Scanner(System.in);
+      
         Node temp=null;
         int i;
         for(i=0;i<count;i++)
@@ -30,12 +31,12 @@ class linkedlistcreation{
             temp.next=var;
             temp=var;
         }
-        sc.close();
+       
     }
     public static void main(String arg[])
     {
         System.out.println("enter the no of nodes :");
-        Scanner sc=new Scanner(System.in);
+        sc=new Scanner(System.in);
         int count=sc.nextInt();
         dynamic(count);
         sc.close();
