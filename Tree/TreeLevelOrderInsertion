@@ -1,0 +1,75 @@
+import java.util.*;
+
+import javax.lang.model.util.ElementScanner6;
+
+class Node {
+    int val;
+    Node left, right;
+
+    Node(int val) {
+        this.val = val;
+        left = null;
+        right = null;
+    }
+}
+
+public class treeCreate {
+    static Node root = null;
+
+    void insertLevel(int vals) {
+
+        Queue<Node> q = new LinkedList<>();
+        if (root == null) {
+            root = new Node(vals);
+
+        } else {
+            System.out.println("s");
+            Node temp = root;
+            q.add(temp);
+            while (!q.isEmpty()) {
+
+                temp = q.peek();
+                q.remove();
+
+                if (temp.left == null) {
+                    Node nw = new Node(vals);
+                    temp.left = nw;
+                    break;
+
+                } else if (temp.right == null) {
+                    Node nw = new Node(vals);
+                    temp.right = nw;
+                    break;
+                } else {
+                    if (temp.left != null)
+                        q.add(temp.left);
+                    if (temp.left != null)
+                        q.add(temp.right);
+                }
+            }
+        }
+
+    }
+    
+
+    void traverse(Node noot) {
+        // Suystem.out.println(noot.val);
+        if (noot != null) {
+            traverse(noot.left);
+            System.out.print(noot.val + " ");
+            traverse(noot.right);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        treeCreate tre = new treeCreate();
+        for (int i = 1; i <= n; i++) {
+            int temp = s.nextInt();
+            tre.insertLevel(temp);
+        }
+        tre.traverse(root);
+
+    }
+}
